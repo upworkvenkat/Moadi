@@ -1,0 +1,21 @@
+<ion-view title="Login" id="page6">
+  <ion-content padding="true" class="has-header">
+    <div id="login-container1">
+      <form id="frmlogin" class="list" ng-controller="loginCtrl" name="frmlogin">
+        <label class="item item-input" id="login-input3">
+          <span class="input-label">Username</span>
+          <input type="text" name="UserName" ng-model="UserName" placeholder="Username" required>
+        </label>
+        <label class="item item-input" id="login-input5">
+          <span class="input-label">password</span>
+          <input type="text" name="Password" ng-model="Password" placeholder="Password" required>
+        </label>
+		<button type="submit" id="login-button4" class="button button-positive  button-block" ng-click="login()">Login</button>
+      </form>
+    </div>
+    
+
+	<div id="login_page">
+	</div>
+  </ion-content>
+</ion-view>
