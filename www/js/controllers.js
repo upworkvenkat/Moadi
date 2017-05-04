@@ -2,7 +2,6 @@ var appinfo={
 	"version":"1.0",
 	"updated":"Not available"
 };
-var RequestVerificationToken="Gw6_b6jY-foEfDNOK5tUz0l1hAreqrzzuuNIblTwjYzKz6ePRPJhbz5scoEKc4XOc0qvY37y2BFojlLSatuqMFOBeO6oZ8Vj8nKxYrY617Q1";
 
 angular.module('app.controllers', [])
   
@@ -14,12 +13,12 @@ function ($scope, $stateParams) {
 
 	var date = new Date();
 
-	cordova.plugins.notification.local.schedule({
+	/*cordova.plugins.notification.local.schedule({
 		id: 1,
 		title: "Moadi App",
 		message: "Thanks for login.....",
 		at: date
-	});
+	});*/
 
 }])
    
@@ -36,6 +35,7 @@ $scope.showConfirm = function() {
 
    confirmPopup.then(function(res) {
      if(res) {
+		 localStorage.clear();
        window.location.href="#/welcom";
      } else {
      }
@@ -107,6 +107,8 @@ function ($scope, $stateParams,$http,$ionicPopup) {
         console.log("Data: " + data + "\nStatus: " + status);
 		//$('#login_page').html(data);
     });*/
+	$scope.UserName="";
+	$scope.Password="";
 	$scope.showAlert = function(str) {
 		var alertPopup = $ionicPopup.alert({
 			title: 'Please fill the following details',
@@ -116,7 +118,8 @@ function ($scope, $stateParams,$http,$ionicPopup) {
 	$scope.login = function() {
 		//alert($scope.frmlogin.$valid)
 		if($scope.frmlogin.$valid) {
-			window.location.href="#/page1/home"
+			localStorage.username=$scope.UserName;
+			window.location.href="#/page1/home";
 		} else {
 			var str="";
 			if($scope.frmlogin.UserName.$error.required)
