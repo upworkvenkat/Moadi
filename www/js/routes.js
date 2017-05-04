@@ -55,7 +55,8 @@ angular.module('app.routes', [])
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
-    controller: 'loginCtrl'
+    controller: 'loginCtrl',
+	cache:false
   })
 
   .state('register', {
@@ -64,8 +65,14 @@ angular.module('app.routes', [])
     controller: 'registerCtrl'
   })
 
-$urlRouterProvider.otherwise('/welcom')
+//$urlRouterProvider.otherwise('/welcom')
 
   
 
-});
+}).run(function ($rootScope) {
+    if(localStorage.username==undefined) {
+		window.location.href="#/welcom";
+	} else {
+		window.location.href="#/page1/home";
+	}
+});;
